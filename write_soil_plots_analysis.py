@@ -35,7 +35,9 @@ df = df.query('Temp_soil50_Avg > 1')
 fig = make_subplots(
     rows=2, cols=2,
     column_widths=[0.5, 0.5],
-    subplot_titles=("Cultivated, 10cm", "Cultivated, 50cm", "Grass cover, 10cm", "Soil moisture %")
+    subplot_titles=("Cultivated, 10cm", "Cultivated, 50cm", "Grass cover, 10cm", "Soil moisture %"),
+    horizontal_spacing = 0.1,
+    vertical_spacing = 0.1,
     )
 
 fig.add_trace(go.Scatter(x=df.Temp_soil10_Avg, y=df.CO2STP_Avg,
@@ -77,6 +79,7 @@ fig.show()
 # 3d plots
 
 
+# soil_temp = px.scatter_3d(df, x='Temp_soil50_Avg', y='CO2STP_Avg', z='TIMESTAMP', color='TIMESTAMP')
 soil_temp = px.scatter_3d(df, x='Temp_soil50_Avg', y='CO2STP_Avg', z='TIMESTAMP', color='Sun_hr')
 
 soil_temp_1 = px.scatter_3d(df, x='Temp_soil50_Avg', y='CO2STP_Avg', z='hour', color='Sun_hr')
