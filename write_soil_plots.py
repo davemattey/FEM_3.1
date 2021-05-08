@@ -13,7 +13,8 @@ df = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000_TenMins
 
 #slice to last week
 
-df = df[-1008:]
+df = df[-2016:]
+
 
 # Create figure
 fig_soil = go.Figure()
@@ -25,7 +26,7 @@ config = {'displayModeBar': False}
 
 #find next midnight to plot opening x range
 today = date.today()+timedelta(days=1)
-today1 = date.today()-timedelta(days=7)
+today1 = date.today()-timedelta(days=14)
 
 # Add traces
 
@@ -350,43 +351,43 @@ fig_soil.update_layout(
 )
 
 # Add range slider
-fig_soil.update_layout(
-    xaxis=dict(
-        rangeselector=dict(
-            buttons=list([
-				dict(count=3,
-                     label="3 days",
-                     step="day",
-                     stepmode="backward"),
-                dict(count=7,
-                     label="week",
-                     step="day",
-                     stepmode="backward"),
-            	dict(count=1,
-                     label="month",
-                     step="month",
-                     stepmode="backward"),
-            	dict(count=3,
-                     label="3 months",
-                     step="month",
-                     stepmode="backward"),
-            	dict(count=6,
-                     label="6 months",
-                     step="month",
-                     stepmode="backward"),
-                dict(count=1,
-                     label="year",
-                     step="year",
-                     stepmode="todate"),
-                dict(step="all")
-            ])
-        ),
-        rangeslider=dict(
-            visible=False
-        ),
-        type="date"
-    )
-)
+# fig_soil.update_layout(
+#     xaxis=dict(
+#         rangeselector=dict(
+#             buttons=list([
+# 				dict(count=3,
+#                      label="3 days",
+#                      step="day",
+#                      stepmode="backward"),
+#                 dict(count=7,
+#                      label="week",
+#                      step="day",
+#                      stepmode="backward"),
+#             	dict(count=1,
+#                      label="month",
+#                      step="month",
+#                      stepmode="backward"),
+#             	dict(count=3,
+#                      label="3 months",
+#                      step="month",
+#                      stepmode="backward"),
+#             	dict(count=6,
+#                      label="6 months",
+#                      step="month",
+#                      stepmode="backward"),
+#                 dict(count=1,
+#                      label="year",
+#                      step="year",
+#                      stepmode="todate"),
+#                 dict(step="all")
+#             ])
+#         ),
+#         rangeslider=dict(
+#             visible=False
+#         ),
+#         type="date"
+#     )
+# )
 
 
 # fig_soil.update_layout(
