@@ -10,10 +10,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b02c017-2db3-4f45-be98-f9139669d3a6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/write_soil_plots_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/write_soil_plots_analysis.py" afterDir="false" />
-    </list>
+    <list default="true" id="4b02c017-2db3-4f45-be98-f9139669d3a6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
