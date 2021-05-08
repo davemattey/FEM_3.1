@@ -10,10 +10,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b02c017-2db3-4f45-be98-f9139669d3a6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/write_soil_plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/write_soil_plots.py" afterDir="false" />
-    </list>
+    <list default="true" id="4b02c017-2db3-4f45-be98-f9139669d3a6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +53,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620249035694</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="soil plots now 2 weeks">
+      <created>1620483775003</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1620483775003</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -73,6 +77,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="FEM_3.1 initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="FEM_3.1 initial commit" />
+    <MESSAGE value="soil plots now 2 weeks" />
+    <option name="LAST_COMMIT_MESSAGE" value="soil plots now 2 weeks" />
   </component>
 </project>
