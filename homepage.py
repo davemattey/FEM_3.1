@@ -99,7 +99,7 @@ body = dbc.Container([
     dbc.Row([dbc.Col
 
 			([html.H5("The small print..."),
-			  html.Span('Version FEM_3.1 updated 5/5/21',style={'padding': '1.5px', 'fontSize': '10px', 'display': 'table'}),
+			  html.Span('Version FEM_3.1 updated 9/5/21',style={'padding': '1.5px', 'fontSize': '10px', 'display': 'table'}),
 			  html.Span('New in this update: updated menus, new soil temperature and moisture measurements, additional soil data plots',style={'padding': '1.5px', 'fontSize': '10px', 'display': 'table'}),
 			  html.Span('The information contained in this website is provided for general interest. No warranty given for completeness, accuracy or reliability.',style={'padding': '1.5px', 'fontSize': '10px', 'display': 'table'}),
 			html.Span('© Dave Mattey 2021 all rights reserved. ',style={'padding': '1.5px', 'fontSize': '10px', 'display': 'table'})]),
