@@ -10,9 +10,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b02c017-2db3-4f45-be98-f9139669d3a6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/homepage.py" beforeDir="false" afterPath="$PROJECT_DIR$/homepage.py" afterDir="false" />
-    </list>
+    <list default="true" id="4b02c017-2db3-4f45-be98-f9139669d3a6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,7 +60,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620483775003</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="tweak">
+      <created>1620563596846</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1620563596846</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -80,6 +85,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="FEM_3.1 initial commit" />
     <MESSAGE value="soil plots now 2 weeks" />
-    <option name="LAST_COMMIT_MESSAGE" value="soil plots now 2 weeks" />
+    <MESSAGE value="tweak" />
+    <option name="LAST_COMMIT_MESSAGE" value="tweak" />
   </component>
 </project>
