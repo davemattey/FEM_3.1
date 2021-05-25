@@ -12,6 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4b02c017-2db3-4f45-be98-f9139669d3a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_gw_v3.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_gw_v3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/write_soil_plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/write_soil_plots.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

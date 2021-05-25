@@ -675,7 +675,7 @@ movement = 'something'
 
 # recharge threshold
 if recharge == False: status_recharge = ' recharge is very low'
-if recharge == False and P_total_today>P_ET: status_recharge = ' recharge may trigger an increase in groundwater level '
+if recharge == False and P_total_today>P_ET: status_recharge = ' higher recharge may change the recent trend in groundwater level '
 if recharge == True: status_recharge = ' recharge is significant such that levels could rise at an increasing rate'
 
 #change
