@@ -446,7 +446,7 @@ if recharge == False and d_change == 'd_change_fall': model = 'Linear'
 # ==================
 # model override
 
-model = 'Fall_0
+model = 'Fall_0'
 
 
 

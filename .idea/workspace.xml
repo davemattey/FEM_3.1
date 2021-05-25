@@ -69,7 +69,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620563596846</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="temporary override model fall0">
+      <created>1621976006233</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1621976006233</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -88,6 +95,7 @@
     <MESSAGE value="FEM_3.1 initial commit" />
     <MESSAGE value="soil plots now 2 weeks" />
     <MESSAGE value="tweak" />
-    <option name="LAST_COMMIT_MESSAGE" value="tweak" />
+    <MESSAGE value="temporary override model fall0" />
+    <option name="LAST_COMMIT_MESSAGE" value="temporary override model fall0" />
   </component>
 </project>
