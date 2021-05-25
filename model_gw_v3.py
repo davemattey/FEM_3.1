@@ -443,6 +443,13 @@ if recharge == True and date_recharge_threshold < date_change_max: model = 'Fall
 if recharge == False and d_change == 'd_change_flat': model = 'Linear'
 if recharge == False and d_change == 'd_change_fall': model = 'Linear'
 
+# ==================
+# model override
+
+model = 'Fall_0
+
+
+
 
 print ('Model = ', model)
 
