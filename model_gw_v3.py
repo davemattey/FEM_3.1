@@ -30,7 +30,7 @@ smooth = 3     #  data smoothing
 W_recent = 28  # slice to find current values
 
 W_search = 120  # window to find peaks in days
-W_search_back_from = '25-11-2020'
+W_search_back_from = '01-11-2020'
 
 # run model from today TRUE or from past date FALSE
 Model_run = True
@@ -39,7 +39,7 @@ Model_run = True
 mon_ave_T = [4.4, 4.4, 6.7, 8.7, 12.1, 15, 17.2, 17.0, 14.4, 15.9, 7.3, 4.6]
 ET = [24.20,26.55,40.09,66.41,99.96,128.12,144.25,125.24,95.26,63.59,36.27,27.39]
 
-P_ET = 26.55
+P_ET = 120.12
 
 
 # Set windows for forward model
