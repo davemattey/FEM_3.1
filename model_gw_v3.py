@@ -39,7 +39,15 @@ Model_run = True
 mon_ave_T = [4.4, 4.4, 6.7, 8.7, 12.1, 15, 17.2, 17.0, 14.4, 15.9, 7.3, 4.6]
 ET = [24.20,26.55,40.09,66.41,99.96,128.12,144.25,125.24,95.26,63.59,36.27,27.39]
 
-P_ET = 120.12
+date_today = datetime.datetime.now().date()
+datetime_today = datetime.datetime.now()
+
+# month_now=int(datetime.now().strftime('%m'))
+month_now=int(date_today.strftime('%m'))
+
+month_now_array = month_now-1   # because array index begins at 0!
+
+P_ET = ET[month_now_array]
 
 
 # Set windows for forward model
@@ -56,10 +64,12 @@ print('date end of search window ',W_search_back_from)
 # Set windows for forward model
 print('projection of forward model on rise  days_forward_risemodel',days_forward_risemodel)
 print('projection of forward model on fall  days_forward_fallmodel',days_forward_fallmodel)
+print('P-ET = ',P_ET)
 
-date_today = datetime.datetime.now().date()
-datetime_today = datetime.datetime.now()
+# set variables to null
 
+date_change_max = date_today
+date_recharge_threshold = date_today
 
 print('••••••••••••••••••••••••••••••••••••••••••• READ daily DATA ••••••••••••••••••••••••••••••••••••••••••••••••••••••')
 
@@ -238,95 +248,101 @@ for i in P_index:
 
 # find number of rows in dataframe and find values from most recent peak
 if len(df_recharge_peaks.axes[0]) > 0:
+    No_peaks = FALSE
     df_recharge_max = (df_recharge_peaks[df_recharge_peaks.date_recharge_max == df_recharge_peaks.date_recharge_max.max()])
-
     date_recharge_max = df_recharge_max.iloc[0, 0]
     P_recharge_max = df_recharge_max.iloc[0, 1]
     rate_recharge_max = df_recharge_max.iloc[0, 2]
     depth_recharge_max = df_recharge_max.iloc[0, 3]
     print("RECHARGE  P rolling max date, P, rate and depth ", date_recharge_max, f'{P_recharge_max:.3f}', f'{rate_recharge_max:.3f}', f'{depth_recharge_max:.3f}')
-else: print ("No peaks found")
+# else: print ("No peaks found")
+else: No_peaks = True
 
-print('RECHARGE peaks')
-print(df_recharge_peaks)
-
-# edit column  headings, add type and append to master list
-df_GW_history = df_recharge_peaks[['date_recharge_max']]
-df_GW_history.columns = ['TIMESTAMP']
-df_GW_history['type']='recharge_max'
-
-print('GW history')
-print(df_GW_history)
+if No_peaks == True: print ("No peaks found")
 
 
-print('############### threshold #################')
-#  find P_ET threshold days
-df_P_ET_init = df_searchwindow[(df_searchwindow.P_rolling_smooth>P_ET)]   # filter for rows above P_ET
-df_P_ET_init['dateshift']=df_P_ET_init.TIMESTAMP - df_P_ET_init.TIMESTAMP.shift(1) # identifies consecutive days
-df_P_ET = df_P_ET_init[(df_P_ET_init.dateshift/np.timedelta64(1, 'D')>1)]   # filters for first day above P_ET
+if No_peaks == False:
+    print('RECHARGE peaks')
+    print(df_recharge_peaks)
 
-print('Recharge threshold',df_P_ET)
+    # edit column  headings, add type and append to master list
+    df_GW_history = df_recharge_peaks[['date_recharge_max']]
+    df_GW_history.columns = ['TIMESTAMP']
+    df_GW_history['type']='recharge_max'
 
-# choose most recent threshold
-df_recharge_threshold = (df_P_ET[df_P_ET.TIMESTAMP == df_P_ET.TIMESTAMP.max()])
+    print('GW history')
+    print(df_GW_history)
 
-date_recharge_threshold = df_recharge_threshold.iloc[0, 0]
-P_recharge_threshold = df_recharge_threshold.iloc[0, 44]
-rate_recharge_threshold = df_recharge_threshold.iloc[0, 43]
-depth_recharge_threshold = df_recharge_threshold.iloc[0, 37]
-print("RECHARGE  P threshold  date, P, rate and depth ", date_recharge_threshold, f'{P_recharge_threshold:.3f}', f'{rate_recharge_threshold:.3f}', f'{depth_recharge_threshold:.3f}')
+if No_peaks == False:
+    print('############### threshold #################')
+    #  find P_ET threshold days
+    df_P_ET_init = df_searchwindow[(df_searchwindow.P_rolling_smooth>P_ET)]   # filter for rows above P_ET
+    df_P_ET_init['dateshift']=df_P_ET_init.TIMESTAMP - df_P_ET_init.TIMESTAMP.shift(1) # identifies consecutive days
+    df_P_ET = df_P_ET_init[(df_P_ET_init.dateshift/np.timedelta64(1, 'D')>1)]   # filters for first day above P_ET
 
-# here we have to make select columns and rename them
+    print('Recharge threshold',df_P_ET)
 
-df_P_ET_list = df_P_ET[['TIMESTAMP',]]
-df_P_ET_list['type']='recharge_threshold'
-#  add type and append to master list
-df_GW_history = df_GW_history.append(df_P_ET_list)
+    # choose most recent threshold
+    df_recharge_threshold = (df_P_ET[df_P_ET.TIMESTAMP == df_P_ET.TIMESTAMP.max()])
 
-print('Recharge dates list',df_P_ET)
-print('Master list',df_GW_history)
+    date_recharge_threshold = df_recharge_threshold.iloc[0, 0]
+    P_recharge_threshold = df_recharge_threshold.iloc[0, 44]
+    rate_recharge_threshold = df_recharge_threshold.iloc[0, 43]
+    depth_recharge_threshold = df_recharge_threshold.iloc[0, 37]
+    print("RECHARGE  P threshold  date, P, rate and depth ", date_recharge_threshold, f'{P_recharge_threshold:.3f}', f'{rate_recharge_threshold:.3f}', f'{depth_recharge_threshold:.3f}')
 
+    # here we have to make select columns and rename them
 
+    df_P_ET_list = df_P_ET[['TIMESTAMP',]]
+    df_P_ET_list['type']='recharge_threshold'
+    #  add type and append to master list
+    df_GW_history = df_GW_history.append(df_P_ET_list)
 
-print('############### RATE #################')
-# Find BH rate of change peaks
-BH_rate_peaks = find_peaks(df_searchwindow['BH_change_smooth'],height = 0.05,prominence = 0.02)
-BH_rate_value = [BH_rate_peaks[1]] # list containing the height of the peaks
-BH_rate_index = [BH_rate_peaks[0]]
-
-global df_BH_rate_peaks
-df_BH_rate_peaks  = pd.DataFrame()
-
-for i in BH_rate_index:
-    df_BH_rate_peaks['date_BH_rate_max'] = df_searchwindow.iloc[i, 0]
-    df_BH_rate_peaks['P_BH_rate_max'] = df_searchwindow.iloc[i, 44]
-    df_BH_rate_peaks['rate_BH_rate_max'] = df_searchwindow.iloc[i, 43]
-    df_BH_rate_peaks['depth_BH_rate_max'] = df_searchwindow.iloc[i, 37]
-
-print('BH CHANGE peaks')
-print(df_BH_rate_peaks)
-
-# choose most recent peak
-
-df_change_max = (df_BH_rate_peaks[df_BH_rate_peaks.date_BH_rate_max == df_BH_rate_peaks.date_BH_rate_max.max()])
-
-date_change_max = df_change_max.iloc[0, 0]
-P_change_max = df_change_max.iloc[0, 1]
-rate_change_max = df_change_max.iloc[0, 2]
-depth_change_max = df_change_max.iloc[0, 3]
-print("BH CHANGE  BH rate max date, P, rate and depth ", date_change_max, f'{P_change_max:.3f}', f'{rate_change_max:.3f}', f'{depth_change_max:.3f}')
-
-# edit column  headings, add type and append to master list
-df_change_max_list = df_recharge_peaks[['date_recharge_max']]
-df_change_max_list.columns=['TIMESTAMP']
-df_change_max_list['type']='change_max'
-df_GW_history  = df_GW_history.append(df_change_max_list)
+    print('Recharge dates list',df_P_ET)
+    print('Master list',df_GW_history)
 
 
-# sort in order of date
-df_GW_history = df_GW_history.sort_values(by ='TIMESTAMP')
+if No_peaks == False:
 
-print('GW history sorted',df_GW_history)
+    print('############### RATE #################')
+    # Find BH rate of change peaks
+    BH_rate_peaks = find_peaks(df_searchwindow['BH_change_smooth'],height = 0.05,prominence = 0.02)
+    BH_rate_value = [BH_rate_peaks[1]] # list containing the height of the peaks
+    BH_rate_index = [BH_rate_peaks[0]]
+
+    global df_BH_rate_peaks
+    df_BH_rate_peaks  = pd.DataFrame()
+
+    for i in BH_rate_index:
+        df_BH_rate_peaks['date_BH_rate_max'] = df_searchwindow.iloc[i, 0]
+        df_BH_rate_peaks['P_BH_rate_max'] = df_searchwindow.iloc[i, 44]
+        df_BH_rate_peaks['rate_BH_rate_max'] = df_searchwindow.iloc[i, 43]
+        df_BH_rate_peaks['depth_BH_rate_max'] = df_searchwindow.iloc[i, 37]
+
+    print('BH CHANGE peaks')
+    print(df_BH_rate_peaks)
+
+    # choose most recent peak
+
+    df_change_max = (df_BH_rate_peaks[df_BH_rate_peaks.date_BH_rate_max == df_BH_rate_peaks.date_BH_rate_max.max()])
+
+    date_change_max = df_change_max.iloc[0, 0]
+    P_change_max = df_change_max.iloc[0, 1]
+    rate_change_max = df_change_max.iloc[0, 2]
+    depth_change_max = df_change_max.iloc[0, 3]
+    print("BH CHANGE  BH rate max date, P, rate and depth ", date_change_max, f'{P_change_max:.3f}', f'{rate_change_max:.3f}', f'{depth_change_max:.3f}')
+
+    # edit column  headings, add type and append to master list
+    df_change_max_list = df_recharge_peaks[['date_recharge_max']]
+    df_change_max_list.columns=['TIMESTAMP']
+    df_change_max_list['type']='change_max'
+    df_GW_history  = df_GW_history.append(df_change_max_list)
+
+
+    # sort in order of date
+    df_GW_history = df_GW_history.sort_values(by ='TIMESTAMP')
+
+    print('GW history sorted',df_GW_history)
 
 
 print('••••••••••••••••••••••••••••••••••••••••••• FIND TREND SET FLAGS •••••••••••••••••••••••••••••••••••••••••••••••••••••••••')
@@ -437,16 +453,16 @@ print ('date_recharge_threshold > date_change_max',date_recharge_threshold > dat
 # if recharge == True and r_change == 'r_change_flat': model = 'Linear'
 # if recharge == True and r_change == 'r_change_fall': model = 'Fall_0'
 
-
-if recharge == True and date_recharge_threshold > date_change_max: model = 'Rise'
-if recharge == True and date_recharge_threshold < date_change_max: model = 'Fall_0'
-if recharge == False and d_change == 'd_change_flat': model = 'Linear'
-if recharge == False and d_change == 'd_change_fall': model = 'Linear'
+if No_peaks == True:
+    model = 'Linear'
+else:
+    if recharge == True and date_recharge_threshold > date_change_max: model = 'Rise'
+    if recharge == True and date_recharge_threshold < date_change_max: model = 'Fall_0'
+    if recharge == False and d_change == 'd_change_flat': model = 'Linear'
+    if recharge == False and d_change == 'd_change_fall': model = 'Linear'
 
 # ==================
-# model override
 
-model = 'Fall_0'
 
 
 
