@@ -13,7 +13,7 @@ df = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000_TenMins
 
 #slice to last week
 
-# df = df[-2016:]
+df = df[-12960:]     # 90 days
 
 
 # Create figure
