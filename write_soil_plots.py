@@ -115,7 +115,7 @@ fig_soil.add_trace(go.Scattergl(
     marker={"size": 2},
     mode="lines+markers",
     name="Soil temperature, grass",
-    yaxis="y7",
+    yaxis="y10",
 
 ))
 
@@ -291,6 +291,25 @@ fig_soil.update_layout(
         # mirror=True,
         showline=True,
         side="left",
+        ticks="inside",
+        # dtick=5,
+        type="linear",
+        showgrid=False,
+        zeroline=False,
+        zerolinecolor="blue",
+        zerolinewidth=0.5,
+    ),
+
+    yaxis10=dict(
+        title="Soil temperature deg C",
+        anchor="x",
+        # range=[5, 15],
+        autorange=True,
+        domain=[0.41, 0.65],
+        linecolor="black",
+        # mirror=True,
+        showline=True,
+        side="right",
         ticks="inside",
         # dtick=5,
         type="linear",
