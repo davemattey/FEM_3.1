@@ -655,13 +655,13 @@ fig_gw.add_annotation(text="Lavant stream at Manor Farm Road",
 
 fig_gw.add_annotation(text="Groundwater level",
                       xref="paper", yref="paper",
-                      x=0.02, y=0.50,
+                      x=0.02, y=0.55,
                       font=dict(size=18, color="blue"),
                       showarrow=False)
 
 fig_gw.add_annotation(text="Effective recharge (green curve) and groundwater level change rate",
                       xref="paper", yref="paper",
-                      x=0.02, y=0.45,
+                      x=0.02, y=0.40,
                       font=dict(size=18, color="purple"),
                       showarrow=False)
 
