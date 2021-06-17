@@ -348,55 +348,57 @@ fig_gw.add_trace(go.Scattergl(
     showlegend=False
 ))
 
-# plot recharge markers
+# plot recharge markers if found
 
-fig_gw.add_trace(go.Scattergl(
-    x=list(df_P_ET.TIMESTAMP),
-    y=list(df_P_ET.BH_depth),
-    marker=dict(color="green", size=8, symbol="diamond-open"),
-    mode="markers",
-    name="Recharge threshold",
-    yaxis="y3",
-    showlegend=False,
-))
+if No_peaks == False:
 
-fig_gw.add_trace(go.Scattergl(
-    x=list(df_recharge_peaks.date_recharge_max),
-    y=list(df_recharge_peaks.depth_recharge_max),
-    marker=dict(color="green", size=10, symbol="diamond-tall"),
-    mode="markers",
-    name="Recharge peaks",
-    yaxis="y3",
-    showlegend=False,
-))
+    fig_gw.add_trace(go.Scattergl(
+        x=list(df_P_ET.TIMESTAMP),
+        y=list(df_P_ET.BH_depth),
+        marker=dict(color="green", size=8, symbol="diamond-open"),
+        mode="markers",
+        name="Recharge threshold",
+        yaxis="y3",
+        showlegend=False,
+    ))
 
-# plot peaks from peak searches  - rate peak
+    fig_gw.add_trace(go.Scattergl(
+        x=list(df_recharge_peaks.date_recharge_max),
+        y=list(df_recharge_peaks.depth_recharge_max),
+        marker=dict(color="green", size=10, symbol="diamond-tall"),
+        mode="markers",
+        name="Recharge peaks",
+        yaxis="y3",
+        showlegend=False,
+    ))
 
-fig_gw.add_trace(go.Scattergl(
-    x=list(df_BH_rate_peaks.date_BH_rate_max),
-    y=list(df_BH_rate_peaks.rate_BH_rate_max),
-    marker=dict(color="purple", size=8),
-    mode="markers",
-    # line_shape='hv',
-    # fill='tozeroy',
-    name="Recharge peaks",
-    yaxis="y4",
-    showlegend=False,
-))
+    # plot peaks from peak searches  - rate peak
 
-# plot rate peak on depth
+    fig_gw.add_trace(go.Scattergl(
+        x=list(df_BH_rate_peaks.date_BH_rate_max),
+        y=list(df_BH_rate_peaks.rate_BH_rate_max),
+        marker=dict(color="purple", size=8),
+        mode="markers",
+        # line_shape='hv',
+        # fill='tozeroy',
+        name="Recharge peaks",
+        yaxis="y4",
+        showlegend=False,
+    ))
 
-fig_gw.add_trace(go.Scattergl(
-    x=list(df_BH_rate_peaks.date_BH_rate_max),
-    y=list(df_BH_rate_peaks.depth_BH_rate_max),
-    marker=dict(color="purple", size=8),
-    mode="markers",
-    # line_shape='hv',
-    # fill='tozeroy',
-    name="Recharge peaks",
-    yaxis="y3",
-    showlegend=False,
-))
+    # plot rate peak on depth
+
+    fig_gw.add_trace(go.Scattergl(
+        x=list(df_BH_rate_peaks.date_BH_rate_max),
+        y=list(df_BH_rate_peaks.depth_BH_rate_max),
+        marker=dict(color="purple", size=8),
+        mode="markers",
+        # line_shape='hv',
+        # fill='tozeroy',
+        name="Recharge peaks",
+        yaxis="y3",
+        showlegend=False,
+    ))
 
 
 #  plot level today
@@ -657,9 +659,9 @@ fig_gw.add_annotation(text="Groundwater level",
                       font=dict(size=18, color="blue"),
                       showarrow=False)
 
-fig_gw.add_annotation(text="Effective recharge and rate of change",
+fig_gw.add_annotation(text="Effective recharge (green curve) and groundwater level change rate",
                       xref="paper", yref="paper",
-                      x=0.98, y=0.45,
+                      x=0.02, y=0.45,
                       font=dict(size=18, color="purple"),
                       showarrow=False)
 
