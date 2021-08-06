@@ -70,6 +70,8 @@ def display_page(pathname):
 	elif pathname == '/stats_P' : return Stats_P()
 	elif pathname == '/stats_T' : return Stats_T()
 	elif pathname == '/diagnostics' : return Diagnostics()
+	elif pathname == '/pluvi_test' : return Pluvi()
+
 
 	else: return Homepage()
 

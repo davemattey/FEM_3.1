@@ -8,15 +8,18 @@ import os
 import io
 
 #create
+
+print('pluvi time series read ')
+df_pluvi = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000_P_Minute.csv",parse_dates=['TIMESTAMP'])
+print (df_pluvi.dtypes)
+
 print('rain time series read ')
 df = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000_TenMins.csv",parse_dates=['TIMESTAMP','WS_mph_TMx'])
 print (df.dtypes)
 
-df_pluvi = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000_P_Minute.csv",parse_dates=['TIMESTAMP'])
-print (df.dtypes)
 #slice to last week
 
-df = df[-12960:]
+df = df[-1008:]
 
 
 # Create figure
@@ -35,36 +38,52 @@ today1 = date.today()-timedelta(days=14)
 
 
 
-# fig_pluvi.add_trace(go.Scattergl(
-#     x=list(df.TIMESTAMP),
-#     y=list(df.WS_mph),
-#     line={"width": 0.5},
-#     marker={"size": 2},
-#     mode="lines",
-#     fill='tozeroy',
-#     name="Average wind speed (mph)",
-#     yaxis="y2",
-# ))
-#
-# fig_pluvi.add_trace(go.Scattergl(
-#     x=list(df.TIMESTAMP),
-#     y=list(df.Temp_HV10_avg),
-#     line={"width": 0.5},
-#     marker={"size": 2},
-#     mode="lines+markers",
-#     name="Air temperature",
-#     yaxis="y4",
-# ))
-#
-# fig_pluvi.add_trace(go.Scattergl(
-#     x=list(df.TIMESTAMP),
-#     y=list(df.RH_HV10),
-#     line={"width": 0.5},
-#     #marker={"size": 2},
-#     mode="lines",
-#     name="Air humidity",
-#     yaxis="y5",
-# ))
+fig_pluvi.add_trace(go.Scattergl(
+    x=list(df.TIMESTAMP),
+    y=list(df.Rain_mm_Tot),
+    line={"width": 0.5},
+    marker={"size": 2},
+    mode="lines",
+    fill='tozeroy',
+    name="Tipping bucket mm/10 minutes",
+    yaxis="y2",
+))
+
+fig_pluvi.add_trace(go.Scattergl(
+   x=list(df.TIMESTAMP),
+    y=list(df.Rain_24hr),
+    line={"width": 1},
+    mode="lines",
+    line_shape='hv',
+    fill='tozeroy',
+    name="Tipping bucket, daily total (mm)",
+    yaxis="y3",
+))
+
+fig_pluvi.add_trace(go.Scattergl(
+    x=list(df_pluvi.TIMESTAMP),
+    y=list(df_pluvi.mm_pluvi),
+    line={"width": 0.5},
+    marker={"size": 2},
+    mode="lines",
+    fill='tozeroy',
+    name="Pluvimate mm/minute",
+    yaxis="y4",
+))
+
+fig_pluvi.add_trace(go.Scattergl(
+    x=list(df_pluvi.TIMESTAMP),
+    y=list(df_pluvi.mm_24hr_sum),
+    line={"width": 1},
+    #marker={"size": 2},
+    mode="lines",
+    line_shape='hv',
+    fill='tozeroy',
+    name="Pluvimate, daily total (mm)",
+    yaxis="y5",
+))
+
+
 #
 # fig_pluvi.add_trace(go.Scattergl(
 #     x=list(df.TIMESTAMP),
@@ -77,17 +96,6 @@ today1 = date.today()-timedelta(days=14)
 #     yaxis="y6",
 # ))
 
-fig_pluvi.add_trace(go.Scattergl(
-   x=list(df.TIMESTAMP),
-    y=list(df.Rain_24hr),
-    line={"width": 1},
-    mode="lines",
-    line_shape='hv',
-    fill='tozeroy',
-    name="Rain, daily total (mm)",
-    yaxis="y3",
-    legendgroup="daily",
-))
 
 # fig_pluvi.add_trace(go.Scattergl(
 #     x=list(df.TIMESTAMP),
@@ -165,28 +173,28 @@ fig_pluvi.update_layout(
       	showticklabels = True,
     ),
 
-    # yaxis2=dict(
-    #     title="Wind speed mph",
-    #     anchor="x",
-    #     autorange=True,
-    #     fixedrange=False,
-    #     domain=[0.0, 0.14],
-    #     linecolor="black",
-    #     #mirror=True,
-    #     showline=True,
-    #     tickmode="auto",
-    #     side="left",
-    #     ticks="inside",
-    #     type="linear",
-    #     showgrid = False,
-    #     zeroline=False
-    # ),
-
-    yaxis3=dict(
-        title="Rain/24h",
+    yaxis2=dict(
+        title="Tipping bucket mm/10 min",
         anchor="x",
         autorange=True,
-        domain=[0, 0.14],
+        fixedrange=False,
+        domain=[0.0, 0.5],
+        linecolor="black",
+        #mirror=True,
+        showline=True,
+        tickmode="auto",
+        side="left",
+        ticks="inside",
+        type="linear",
+        showgrid = False,
+        zeroline=False
+    ),
+
+    yaxis3=dict(
+        title="Tipping bucket cumulative daily mm",
+        anchor="x",
+        autorange=True,
+        domain=[0, 0.5],
         linecolor="black",
         mirror=True,
         showline=True,
@@ -197,39 +205,39 @@ fig_pluvi.update_layout(
         zeroline= True
     ),
 
-    # yaxis4=dict(
-    #     title="Air temperature",
-    #     anchor="x",
-    #     autorange=True,
-    #     domain=[0.19, 0.4],
-    #     linecolor="black",
-    #     #mirror=True,
-    #     #range=[380, 480],
-    #     showline=True,
-    #     tickmode="auto",
-    #     side="left",
-    #     ticks="inside",
-    #     type="linear",
-    #     showgrid = False,
-    #     zeroline=False
-    # ),
-    #
-    # yaxis5=dict(
-    #     title="Humidity",
-    #     anchor="x",
-    #     autorange=True,
-    #     domain=[0.19, 0.4],
-    #     linecolor="black",
-    #     #mirror=True,
-    #     # range=[380, 480],
-    #     showline=True,
-    #     tickmode="auto",
-    #     side="right",
-    #     ticks="inside",
-    #     type="linear",
-    #     showgrid=False,
-    #     zeroline=False
-    # ),
+    yaxis4=dict(
+        title="Pluvimate mm/min",
+        anchor="x",
+        autorange=True,
+        domain=[0.52, 1.0],
+        linecolor="black",
+        #mirror=True,
+        #range=[380, 480],
+        showline=True,
+        tickmode="auto",
+        side="left",
+        ticks="inside",
+        type="linear",
+        showgrid = False,
+        zeroline=False
+    ),
+
+    yaxis5=dict(
+        title="Pluvimate cumulative daily mm",
+        anchor="x",
+        autorange=True,
+        domain=[0.52, 1],
+        linecolor="black",
+        #mirror=True,
+        # range=[380, 480],
+        showline=True,
+        tickmode="auto",
+        side="right",
+        ticks="inside",
+        type="linear",
+        showgrid=False,
+        zeroline=False
+    ),
     #
     # yaxis6=dict(
     #     title="% Sunshine",

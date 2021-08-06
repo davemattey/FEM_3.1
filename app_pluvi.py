@@ -27,18 +27,18 @@ nav = Navbar()
 body = dbc.Container(
 
 	[
-	dbc.Row(dbc.Col(html.H3("Pluvimate data streaming "))),
+	dbc.Row(dbc.Col(html.H3("Pluvimate high resolution precipitation monitoring "))),
 	dbc.Row(html.P('..')),
-	dbc.Row(html.P('Data samples at 1 minute intervals ')),
+	dbc.Row(html.P('Live data comparison at 1 minute resolution (Pluvimate) and 10 minute resolution (Tipping Bucket) ')),
 	dbc.Row(html.P('..')),
-	dbc.Row(dbc.Col(html.Iframe(src='https://cr1000.firstcloudit.com/CO2_plot.html',height=800, width=1000))
+	dbc.Row(dbc.Col(html.Iframe(src='https://cr1000.firstcloudit.com/pluvi_plot.html',height=850, width=1000))
 	),
 	]
 )
 
 ########################################################################
 #wrap it up
-print('CO2 end ')
+print('Pluvi end ')
 
 
 #function returns the entire layout for homepage as a div

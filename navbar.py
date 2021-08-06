@@ -113,7 +113,7 @@ def Navbar():
 		dbc.DropdownMenu(
 			nav=True,
 			in_navbar=True,
-			label="Devellopment",
+			label="Development",
 			children=[
 				dbc.DropdownMenuItem("Raingauge testing", href="/pluvi_test"),
 				dbc.DropdownMenuItem("Station diagnostics", href="/diagnostics"),

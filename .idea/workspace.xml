@@ -13,6 +13,9 @@
     <list default="true" id="4b02c017-2db3-4f45-be98-f9139669d3a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_pluvi.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_pluvi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homepage.py" beforeDir="false" afterPath="$PROJECT_DIR$/homepage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navbar.py" beforeDir="false" afterPath="$PROJECT_DIR$/navbar.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/write_pluvi_plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/write_pluvi_plots.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
