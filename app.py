@@ -27,6 +27,7 @@ from app_timeseries import Timeseries
 from app_timeseries_WC import WC_archive
 from app_groundwater_v2 import Groundwater
 from app_diagnostics import Diagnostics
+from app_pluvi import Pluvi
 
 from evapotranspiration.penman_monteith_daily import PenmanMonteithDaily
 # from app_groundwater import sunrise_today, sunset_today, daylength_today
