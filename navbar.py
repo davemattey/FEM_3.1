@@ -20,7 +20,6 @@ def Navbar():
 				dbc.DropdownMenuItem("Environment Agency status reports for Hampshire",
 									 href="https://www.gov.uk/government/publications/hampshire-groundwater",
 									 target="_blank"),
-				dbc.DropdownMenuItem("Diagnostics", href="/diagnostics"),
 			],
 		),
 
@@ -111,6 +110,16 @@ def Navbar():
 				dbc.DropdownMenuItem("Regional records", href="https://www.metoffice.gov.uk/research/climate/maps-and-data/uk-climate-averages/gcp76x8dg",target="_blank"),],
 		),
 
+		dbc.DropdownMenu(
+			nav=True,
+			in_navbar=True,
+			label="Devellopment",
+			children=[
+				dbc.DropdownMenuItem("Raingauge testing", href="/pluvi_test"),
+				dbc.DropdownMenuItem("Station diagnostics", href="/diagnostics"),
+				dbc.DropdownMenuItem("Model validation", href="/validation"),
+			],
+		),
 
 	],
 			brand="Home",
