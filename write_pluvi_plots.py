@@ -32,7 +32,7 @@ config = {'displayModeBar': False}
 
 #find next midnight to plot opening x range
 today = date.today()+timedelta(days=1)
-today1 = date.today()-timedelta(days=3)
+today1 = date.today()-timedelta(days=2)
 
 # Add traces
 
