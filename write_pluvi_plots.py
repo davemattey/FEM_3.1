@@ -32,7 +32,7 @@ config = {'displayModeBar': False}
 
 #find next midnight to plot opening x range
 today = date.today()+timedelta(days=1)
-today1 = date.today()-timedelta(days=14)
+today1 = date.today()-timedelta(days=3)
 
 # Add traces
 
@@ -44,6 +44,7 @@ fig_pluvi.add_trace(go.Scattergl(
     line={"width": 0.5},
     marker={"size": 2},
     mode="lines",
+    line_shape='hv',
     fill='tozeroy',
     name="Tipping bucket mm/10 minutes",
     yaxis="y2",
@@ -66,6 +67,7 @@ fig_pluvi.add_trace(go.Scattergl(
     line={"width": 0.5},
     marker={"size": 2},
     mode="lines",
+    line_shape='hv',
     fill='tozeroy',
     name="Pluvimate mm/minute",
     yaxis="y4",
@@ -385,6 +387,10 @@ fig_pluvi.update_layout(
     xaxis=dict(
         rangeselector=dict(
             buttons=list([
+                dict(count=1,
+                     label="1 day",
+                     step="day",
+                     stepmode="backward"),
 				dict(count=3,
                      label="3 days",
                      step="day",
@@ -446,18 +452,18 @@ fig_pluvi.update_layout(
 
 
 
-# fig_pluvi.add_annotation(text="Soil CO2",
-#     xref="paper", yref="paper",
-#     x=0.02, y=0.98,
-# 	font=dict(size=12, color="purple"),
-# 	showarrow=False)
-#
-# fig_pluvi.add_annotation(text="Soil moisture content",
-#     xref="paper", yref="paper",
-#     x=0.92, y=0.8,
-# 	font=dict(size=12, color="purple"),
-# 	showarrow=False)
-#
+fig_pluvi.add_annotation(text="Pluvimate record",
+    xref="paper", yref="paper",
+    x=0.02, y=0.97,
+	font=dict(size=12, color="purple"),
+	showarrow=False)
+
+fig_pluvi.add_annotation(text="Environsys 8 inch tipping bucket record",
+    xref="paper", yref="paper",
+    x=0.02, y=0.47,
+	font=dict(size=12, color="purple"),
+	showarrow=False)
+
 #
 # fig_pluvi.add_annotation(text="Soil temperature (cultivated 10cm, cultivated 50cm, grass 10cm)",
 #     xref="paper", yref="paper",
