@@ -17,9 +17,9 @@ print('rain time series read ')
 df = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000_TenMins.csv",parse_dates=['TIMESTAMP','WS_mph_TMx'])
 print (df.dtypes)
 
-#slice to last week
+#slice to last month
 
-df = df[-1008:]
+df = df[-4024:]
 
 
 # Create figure

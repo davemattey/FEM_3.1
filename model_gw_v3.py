@@ -248,7 +248,7 @@ for i in P_index:
 
 # find number of rows in dataframe and find values from most recent peak
 if len(df_recharge_peaks.axes[0]) > 0:
-    No_peaks = FALSE
+    No_peaks = False
     df_recharge_max = (df_recharge_peaks[df_recharge_peaks.date_recharge_max == df_recharge_peaks.date_recharge_max.max()])
     date_recharge_max = df_recharge_max.iloc[0, 0]
     P_recharge_max = df_recharge_max.iloc[0, 1]
@@ -313,36 +313,47 @@ if No_peaks == False:
     global df_BH_rate_peaks
     df_BH_rate_peaks  = pd.DataFrame()
 
-    for i in BH_rate_index:
-        df_BH_rate_peaks['date_BH_rate_max'] = df_searchwindow.iloc[i, 0]
-        df_BH_rate_peaks['P_BH_rate_max'] = df_searchwindow.iloc[i, 44]
-        df_BH_rate_peaks['rate_BH_rate_max'] = df_searchwindow.iloc[i, 43]
-        df_BH_rate_peaks['depth_BH_rate_max'] = df_searchwindow.iloc[i, 37]
 
-    print('BH CHANGE peaks')
-    print(df_BH_rate_peaks)
+    no_rate_peaks = df_BH_rate_peaks.empty
+    print('Is the rate peaks dataframe empty :', no_rate_peaks)
 
-    # choose most recent peak
+    if no_rate_peaks == False:
 
-    df_change_max = (df_BH_rate_peaks[df_BH_rate_peaks.date_BH_rate_max == df_BH_rate_peaks.date_BH_rate_max.max()])
+        for i in BH_rate_index:
+            df_BH_rate_peaks['date_BH_rate_max'] = df_searchwindow.iloc[i, 0]
+            df_BH_rate_peaks['P_BH_rate_max'] = df_searchwindow.iloc[i, 44]
+            df_BH_rate_peaks['rate_BH_rate_max'] = df_searchwindow.iloc[i, 43]
+            df_BH_rate_peaks['depth_BH_rate_max'] = df_searchwindow.iloc[i, 37]
 
-    date_change_max = df_change_max.iloc[0, 0]
-    P_change_max = df_change_max.iloc[0, 1]
-    rate_change_max = df_change_max.iloc[0, 2]
-    depth_change_max = df_change_max.iloc[0, 3]
-    print("BH CHANGE  BH rate max date, P, rate and depth ", date_change_max, f'{P_change_max:.3f}', f'{rate_change_max:.3f}', f'{depth_change_max:.3f}')
-
-    # edit column  headings, add type and append to master list
-    df_change_max_list = df_recharge_peaks[['date_recharge_max']]
-    df_change_max_list.columns=['TIMESTAMP']
-    df_change_max_list['type']='change_max'
-    df_GW_history  = df_GW_history.append(df_change_max_list)
+        print('BH CHANGE peaks')
+        print(df_BH_rate_peaks)
 
 
-    # sort in order of date
-    df_GW_history = df_GW_history.sort_values(by ='TIMESTAMP')
+        # choose most recent peak
 
-    print('GW history sorted',df_GW_history)
+        df_change_max = (df_BH_rate_peaks[df_BH_rate_peaks.date_BH_rate_max == df_BH_rate_peaks.date_BH_rate_max.max()])
+
+        date_change_max = df_change_max.iloc[0, 0]
+        P_change_max = df_change_max.iloc[0, 1]
+        rate_change_max = df_change_max.iloc[0, 2]
+        depth_change_max = df_change_max.iloc[0, 3]
+        print("BH CHANGE  BH rate max date, P, rate and depth ", date_change_max, f'{P_change_max:.3f}', f'{rate_change_max:.3f}', f'{depth_change_max:.3f}')
+
+        # edit column  headings, add type and append to master list
+        df_change_max_list = df_recharge_peaks[['date_recharge_max']]
+        df_change_max_list.columns=['TIMESTAMP']
+        df_change_max_list['type']='change_max'
+        df_GW_history  = df_GW_history.append(df_change_max_list)
+
+
+        # sort in order of date
+        df_GW_history = df_GW_history.sort_values(by ='TIMESTAMP')
+
+        print('GW history sorted',df_GW_history)
+
+    else:
+        print('No BH CHANGE peaks')
+
 
 
 print('••••••••••••••••••••••••••••••••••••••••••• FIND TREND SET FLAGS •••••••••••••••••••••••••••••••••••••••••••••••••••••••••')
@@ -453,7 +464,7 @@ print ('date_recharge_threshold > date_change_max',date_recharge_threshold > dat
 # if recharge == True and r_change == 'r_change_flat': model = 'Linear'
 # if recharge == True and r_change == 'r_change_fall': model = 'Fall_0'
 
-if No_peaks == True:
+if No_peaks == True or no_rate_peaks == True:
     model = 'Linear'
 else:
     if recharge == True and date_recharge_threshold > date_change_max: model = 'Rise'
@@ -462,10 +473,6 @@ else:
     if recharge == False and d_change == 'd_change_fall': model = 'Linear'
 
 # ==================
-
-
-
-
 
 print ('Model = ', model)
 
