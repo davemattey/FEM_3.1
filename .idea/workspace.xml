@@ -12,8 +12,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4b02c017-2db3-4f45-be98-f9139669d3a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model_gw_v3.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_gw_v3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/write_pluvi_plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/write_pluvi_plots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/write_gw_plots_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/write_gw_plots_v2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628324261684</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Trap error when no peaks">
+      <created>1634055413428</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1634055413428</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -175,7 +181,8 @@
     <MESSAGE value="Pluvimate testing" />
     <MESSAGE value="Pluvimate page" />
     <MESSAGE value="edit pluvi plot" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit pluvi plot" />
+    <MESSAGE value="Trap error when no peaks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trap error when no peaks" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

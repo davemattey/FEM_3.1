@@ -372,33 +372,34 @@ if No_peaks == False:
         showlegend=False,
     ))
 
-    # plot peaks from peak searches  - rate peak
+    # plot peaks from peak searches  - rate peak - if present
+    if no_rate_peaks == False:
 
-    fig_gw.add_trace(go.Scattergl(
-        x=list(df_BH_rate_peaks.date_BH_rate_max),
-        y=list(df_BH_rate_peaks.rate_BH_rate_max),
-        marker=dict(color="purple", size=8),
-        mode="markers",
-        # line_shape='hv',
-        # fill='tozeroy',
-        name="Recharge peaks",
-        yaxis="y4",
-        showlegend=False,
-    ))
+        fig_gw.add_trace(go.Scattergl(
+            x=list(df_BH_rate_peaks.date_BH_rate_max),
+            y=list(df_BH_rate_peaks.rate_BH_rate_max),
+            marker=dict(color="purple", size=8),
+            mode="markers",
+            # line_shape='hv',
+            # fill='tozeroy',
+            name="Recharge peaks",
+            yaxis="y4",
+            showlegend=False,
+        ))
 
-    # plot rate peak on depth
+        # plot rate peak on depth
 
-    fig_gw.add_trace(go.Scattergl(
-        x=list(df_BH_rate_peaks.date_BH_rate_max),
-        y=list(df_BH_rate_peaks.depth_BH_rate_max),
-        marker=dict(color="purple", size=8),
-        mode="markers",
-        # line_shape='hv',
-        # fill='tozeroy',
-        name="Recharge peaks",
-        yaxis="y3",
-        showlegend=False,
-    ))
+        fig_gw.add_trace(go.Scattergl(
+            x=list(df_BH_rate_peaks.date_BH_rate_max),
+            y=list(df_BH_rate_peaks.depth_BH_rate_max),
+            marker=dict(color="purple", size=8),
+            mode="markers",
+            # line_shape='hv',
+            # fill='tozeroy',
+            name="Recharge peaks",
+            yaxis="y3",
+            showlegend=False,
+        ))
 
 
 #  plot level today
