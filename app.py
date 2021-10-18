@@ -186,7 +186,7 @@ def update_10min_data(n):
 	mon_ave_P = [77.8,56,54.8,52.6,52.2,48.5,50.2,52.1,61.8,87.1,83.9,78.5]
 	rain_month_pc=100*(rain_month/mon_ave_P[month_now_array])
 
-	mon_ave_T = [4.4,4.4,6.7,8.7,12.1,15,17.2,17.0,14.4,15.9,7.3,4.6]
+	mon_ave_T = [4.4,4.4,6.7,8.7,12.1,15,17.2,17.0,14.4,10.9,7.3,4.6]
 	T_month_ave = mon_ave_T[month_now_array]
 	T_month_diff = t_ave_month - T_month_ave
 	if T_month_diff > 0: T_direction = 'above'
