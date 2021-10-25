@@ -9,13 +9,16 @@ import io
 
 #create
 
-print('pluvi time series read ')
+
 df_pluvi = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000B_TenMIns.csv",parse_dates=['TIMESTAMP'])
 print (df_pluvi.dtypes)
+print('pluvi time series read ')
 
-print('rain time series read ')
-df = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000_TenMins.csv",parse_dates=['TIMESTAMP','WS_mph_TMx'])
+print('rain time series start ')
+df = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000_TenMins.csv",parse_dates=['TIMESTAMP','WS_mph_TMx'],chunksize=1000)
 print (df.dtypes)
+print('rain time series read ')
+
 
 #slice to last month
 
