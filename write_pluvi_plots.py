@@ -10,7 +10,7 @@ import io
 #create
 
 print('pluvi time series read ')
-df_pluvi = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000_P_Minute.csv",parse_dates=['TIMESTAMP'])
+df_pluvi = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000B_TenMIns.csv",parse_dates=['TIMESTAMP'])
 print (df_pluvi.dtypes)
 
 print('rain time series read ')
@@ -19,7 +19,7 @@ print (df.dtypes)
 
 #slice to last month
 
-df = df[-4024:]
+df = df[-1006:]
 
 
 # Create figure
@@ -46,7 +46,7 @@ fig_pluvi.add_trace(go.Scattergl(
     mode="lines",
     line_shape='hv',
     fill='tozeroy',
-    name="Tipping bucket mm/10 minutes",
+    name="Pluvimate A",
     yaxis="y2",
 ))
 
@@ -57,32 +57,32 @@ fig_pluvi.add_trace(go.Scattergl(
     mode="lines",
     line_shape='hv',
     fill='tozeroy',
-    name="Tipping bucket, daily total (mm)",
-    yaxis="y3",
-))
-
-fig_pluvi.add_trace(go.Scattergl(
-    x=list(df_pluvi.TIMESTAMP),
-    y=list(df_pluvi.mm_pluvi),
-    line={"width": 0.5},
-    marker={"size": 2},
-    mode="lines",
-    line_shape='hv',
-    fill='tozeroy',
-    name="Pluvimate mm/minute",
+    name="Pluvimate A, daily total (mm)",
     yaxis="y4",
 ))
 
 fig_pluvi.add_trace(go.Scattergl(
     x=list(df_pluvi.TIMESTAMP),
-    y=list(df_pluvi.mm_24hr_sum),
+    y=list(df_pluvi.Pluvi_B_mm_Tot),
+    line={"width": 0.5},
+    marker={"size": 2},
+    mode="lines",
+    line_shape='hv',
+    fill='tozeroy',
+    name="Pluvimate B mm/minute",
+    yaxis="y2",
+))
+
+fig_pluvi.add_trace(go.Scattergl(
+    x=list(df_pluvi.TIMESTAMP),
+    y=list(df_pluvi.Pluvi_B_24hr),
     line={"width": 1},
     #marker={"size": 2},
     mode="lines",
     line_shape='hv',
     fill='tozeroy',
-    name="Pluvimate, daily total (mm)",
-    yaxis="y5",
+    name="Pluvimate B, daily total (mm)",
+    yaxis="y4",
 ))
 
 
@@ -176,11 +176,11 @@ fig_pluvi.update_layout(
     ),
 
     yaxis2=dict(
-        title="Tipping bucket mm/10 min",
+        title="Rain mm/10 min",
         anchor="x",
         autorange=True,
         fixedrange=False,
-        domain=[0.0, 0.5],
+        domain=[0.52, 1],
         linecolor="black",
         #mirror=True,
         showline=True,
@@ -208,10 +208,10 @@ fig_pluvi.update_layout(
     ),
 
     yaxis4=dict(
-        title="Pluvimate mm/min",
+        title="Cumulative total, mm",
         anchor="x",
         autorange=True,
-        domain=[0.52, 1.0],
+        domain=[0, 0.5],
         linecolor="black",
         #mirror=True,
         #range=[380, 480],
