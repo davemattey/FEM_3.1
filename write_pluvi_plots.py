@@ -15,7 +15,7 @@ print (df_pluvi.dtypes)
 print('pluvi time series read ')
 
 print('rain time series start ')
-df = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000_TenMins.csv",parse_dates=['TIMESTAMP','WS_mph_TMx'],chunksize=1000)
+df = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000_TenMins.csv",parse_dates=['TIMESTAMP','WS_mph_TMx'])
 print (df.dtypes)
 print('rain time series read ')
 

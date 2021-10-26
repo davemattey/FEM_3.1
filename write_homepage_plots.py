@@ -10,12 +10,13 @@ import io
 #create
 
 df = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000_TenMins.csv",parse_dates=['TIMESTAMP','WS_mph_TMx'])
+print(df.dtypes)
 
 
 #create homepage plot
 #slice to last week
 
-df = df[-1008:]
+df = df[-4032:]
 
 # Create figure
 fig_ts = go.Figure()
@@ -419,6 +420,33 @@ fig_ts.update_layout(
         b=30,
         l=0,
         r=0)
+)
+
+
+# Add range slider
+fig_ts.update_layout(
+    xaxis=dict(
+        rangeselector=dict(
+            buttons=list([
+                dict(count=1,
+                     label="today",
+                     step="day",
+                     stepmode="backward"),
+                dict(count=7,
+                     label="this week",
+                     step="day",
+                     stepmode="backward"),
+            	dict(count=1,
+                     label="this month",
+                     step="month",
+                     stepmode="backward"),
+            ])
+        ),
+        rangeslider=dict(
+            visible=False
+        ),
+        type="date"
+    )
 )
 
 #style
