@@ -12,6 +12,7 @@ import io
 
 df_pluvi = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000B_TenMIns.csv",parse_dates=['TIMESTAMP'])
 print (df_pluvi.dtypes)
+print (df_pluvi)
 print('pluvi time series read ')
 
 print('rain time series start ')
@@ -22,7 +23,7 @@ print('rain time series read ')
 
 #slice to last month
 
-df = df[-1006:]
+df = df[-4032:]
 
 
 # Create figure
@@ -48,7 +49,7 @@ fig_pluvi.add_trace(go.Scattergl(
     marker={"size": 2},
     mode="lines",
     line_shape='hv',
-    fill='tozeroy',
+    # fill='tozeroy',
     name="Pluvimate A",
     yaxis="y2",
 ))
@@ -59,7 +60,7 @@ fig_pluvi.add_trace(go.Scattergl(
     line={"width": 1},
     mode="lines",
     line_shape='hv',
-    fill='tozeroy',
+    # fill='tozeroy',
     name="Pluvimate A, daily total (mm)",
     yaxis="y4",
 ))
@@ -71,7 +72,7 @@ fig_pluvi.add_trace(go.Scattergl(
     marker={"size": 2},
     mode="lines",
     line_shape='hv',
-    fill='tozeroy',
+    # fill='tozeroy',
     name="Pluvimate B mm/minute",
     yaxis="y2",
 ))
@@ -83,7 +84,7 @@ fig_pluvi.add_trace(go.Scattergl(
     #marker={"size": 2},
     mode="lines",
     line_shape='hv',
-    fill='tozeroy',
+    # fill='tozeroy',
     name="Pluvimate B, daily total (mm)",
     yaxis="y4",
 ))
@@ -455,13 +456,13 @@ fig_pluvi.update_layout(
 
 
 
-fig_pluvi.add_annotation(text="Pluvimate record",
+fig_pluvi.add_annotation(text="Rain record at 10 minute resolution",
     xref="paper", yref="paper",
     x=0.02, y=0.97,
 	font=dict(size=12, color="purple"),
 	showarrow=False)
 
-fig_pluvi.add_annotation(text="Environsys 8 inch tipping bucket record",
+fig_pluvi.add_annotation(text="Daily cumulative total",
     xref="paper", yref="paper",
     x=0.02, y=0.47,
 	font=dict(size=12, color="purple"),
