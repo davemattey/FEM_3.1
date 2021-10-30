@@ -49,19 +49,19 @@ fig_pluvi.add_trace(go.Scattergl(
     marker={"size": 2},
     mode="lines",
     line_shape='hv',
-    # fill='tozeroy',
-    name="Pluvimate A",
+    fill='tozeroy',
+    name="Environsys TB",
     yaxis="y2",
 ))
 
 fig_pluvi.add_trace(go.Scattergl(
-   x=list(df_CR1000B.TIMESTAMP),
-    y=list(df_CR1000B.TB_Rain_24hr),
+   x=list(df_CR1000A.TIMESTAMP),
+    y=list(df_CR1000A.Rain_mm_Tot),
     line={"width": 1},
     mode="lines",
     line_shape='hv',
-    # fill='tozeroy',
-    name="Pluvimate A, daily total (mm)",
+    fill='tozeroy',
+    name="Pluvimate FEM",
     yaxis="y3",
 ))
 
@@ -72,9 +72,33 @@ fig_pluvi.add_trace(go.Scattergl(
     marker={"size": 2},
     mode="lines",
     line_shape='hv',
+    fill='tozeroy',
+    name="Pluvimate B",
+    yaxis="y4",
+))
+
+fig_pluvi.add_trace(go.Scattergl(
+    x=list(df_CR1000B.TIMESTAMP),
+    y=list(df_CR1000B.TB_Rain_24hr),
+    line={"width": 1},
+    #marker={"size": 2},
+    mode="lines",
+    line_shape='hv',
     # fill='tozeroy',
-    name="Pluvimate B mm/minute",
-    yaxis="y2",
+    name="Environsys TB",
+    yaxis="y5",
+))
+
+fig_pluvi.add_trace(go.Scattergl(
+    x=list(df_CR1000A.TIMESTAMP),
+    y=list(df_CR1000A.Rain_24hr),
+    line={"width": 1},
+    #marker={"size": 2},
+    mode="lines",
+    line_shape='hv',
+    fill='tozeroy',
+    name="Pluvimate FEM",
+    yaxis="y5",
 ))
 
 fig_pluvi.add_trace(go.Scattergl(
@@ -85,89 +109,9 @@ fig_pluvi.add_trace(go.Scattergl(
     mode="lines",
     line_shape='hv',
     # fill='tozeroy',
-    name="Pluvimate B, daily total (mm)",
-    yaxis="y3",
+    name="Pluvimate B",
+    yaxis="y5",
 ))
-
-# fig_pluvi.add_trace(go.Scattergl(
-#     x=list(df_CR1000B.TIMESTAMP),
-#     y=list(df_CR1000B.Rain_mm_Tot),
-#     line={"width": 0.5},
-#     marker={"size": 2},
-#     mode="lines",
-#     line_shape='hv',
-#     # fill='tozeroy',
-#     name="Pluvimate B mm/minute",
-#     yaxis="y2",
-# ))
-
-
-
-#
-# fig_pluvi.add_trace(go.Scattergl(
-#     x=list(df.TIMESTAMP),
-#     y=list(df.Sun_percent),
-#     line={"width": 1},
-#     mode="lines",
-#     line_shape='hv',
-#     fill='tozeroy',
-#     name="% sunshine/10 mins",
-#     yaxis="y6",
-# ))
-
-
-# fig_pluvi.add_trace(go.Scattergl(
-#     x=list(df.TIMESTAMP),
-#     y=list(df.Temp_soil10_Avg),
-#     line={"width": 0.5},
-#     marker={"size": 2},
-#     mode="lines+markers",
-#     name="Soil temperature, 10cm",
-#     yaxis="y7",
-#
-# ))
-#
-# fig_pluvi.add_trace(go.Scattergl(
-#     x=list(df.TIMESTAMP),
-#     y=list(df.Temp_soil50_Avg),
-#     line={"width": 0.5},
-#     marker={"size": 2},
-#     mode="lines+markers",
-#     name="Soil temperature, 50cm",
-#     yaxis="y7",
-#
-# ))
-#
-# fig_pluvi.add_trace(go.Scattergl(
-#     x=list(df.TIMESTAMP),
-#     y=list(df.Soil_T),
-#     line={"width": 0.5},
-#     marker={"size": 2},
-#     mode="lines+markers",
-#     name="Soil temperature, grass",
-#     yaxis="y10",
-#
-# ))
-#
-# fig_pluvi.add_trace(go.Scattergl(
-#     x=list(df.TIMESTAMP),
-#     y=list(df.Soil_water),
-#     line={"width": 0.5},
-#     marker={"size": 2},
-#     mode="lines+markers",
-#     name="Soil water %",
-#     yaxis="y8",
-# ))
-#
-# fig_pluvi.add_trace(go.Scattergl(
-#     x=list(df.TIMESTAMP),
-#     y=list(df.CO2STP_Avg),
-#     line={"width": 0.5},
-#     marker={"size": 2},
-#     mode="lines+markers",
-#     name="CO2 soil CO2 (ppm)",
-#     yaxis="y9",
-# ))
 
 
 
@@ -193,11 +137,11 @@ fig_pluvi.update_layout(
     ),
 
     yaxis2=dict(
-        title="Rain mm/10 min",
+        # title="Rain mm/10 min",
         anchor="x",
         autorange=True,
         fixedrange=False,
-        domain=[0.0, .5],
+        domain=[0.0, .15],
         linecolor="black",
         #mirror=True,
         showline=True,
@@ -210,14 +154,14 @@ fig_pluvi.update_layout(
     ),
 
     yaxis3=dict(
-        title="Tipping bucket cumulative daily mm",
+        title="Rain mm/10 min",
         anchor="x",
         autorange=True,
-        domain=[.52, 1],
+        domain=[.16, .3],
         linecolor="black",
         mirror=True,
         showline=True,
-        side="right",
+        side="left",
         ticks="inside",
         type="linear",
         zerolinecolor ="lightgrey",
@@ -225,10 +169,10 @@ fig_pluvi.update_layout(
     ),
 
     yaxis4=dict(
-        title="Cumulative total, mm",
+        # title="Rain mm/10 min",
         anchor="x",
         autorange=True,
-        domain=[0, 0.5],
+        domain=[0.31, 0.45],
         linecolor="black",
         #mirror=True,
         #range=[380, 480],
@@ -242,16 +186,16 @@ fig_pluvi.update_layout(
     ),
 
     yaxis5=dict(
-        title="Pluvimate cumulative daily mm",
+        title="Cumulative daily mm",
         anchor="x",
         autorange=True,
-        domain=[0.52, 1],
+        domain=[0.47, 1],
         linecolor="black",
         #mirror=True,
         # range=[380, 480],
         showline=True,
         tickmode="auto",
-        side="right",
+        side="left",
         ticks="inside",
         type="linear",
         showgrid=False,
@@ -443,44 +387,32 @@ fig_pluvi.update_layout(
 )
 
 
-# fig_pluvi.update_layout(
-#     updatemenus=[
-#         dict(
-#             active=0,
-#             buttons=list([
-# 				dict(label="This week",
-#                      method="update",
-#                      args=[{"visible": [True, True, True, True, True, True, False, False, False, False, False, False]},
-#                            {"title": "Select"}]),
-#                 dict(label="All data",
-#                      method="update",
-#                      args=[{"visible": [False, False, False, False, False, False,True, True, True, True, True, True]},
-#                            {"title": "Select"}]),
-#
-#             ]),
-# 		    x=1,
-#             xanchor="left",
-#             y=1.2,
-#             yanchor="top",
-#         )
-#     ])
 
 
 
-
-
-fig_pluvi.add_annotation(text="Rain record at 10 minute resolution",
+fig_pluvi.add_annotation(text="Cumulative totals",
     xref="paper", yref="paper",
     x=0.02, y=0.97,
 	font=dict(size=12, color="purple"),
 	showarrow=False)
 
-fig_pluvi.add_annotation(text="Daily cumulative total",
+fig_pluvi.add_annotation(text="Pluvimate B",
     xref="paper", yref="paper",
     x=0.02, y=0.47,
 	font=dict(size=12, color="purple"),
 	showarrow=False)
 
+fig_pluvi.add_annotation(text="Pluvimate FEM",
+    xref="paper", yref="paper",
+    x=0.02, y=0.27,
+	font=dict(size=12, color="purple"),
+	showarrow=False)
+
+fig_pluvi.add_annotation(text="Environsys tipping bucket",
+    xref="paper", yref="paper",
+    x=0.02, y=0.13,
+	font=dict(size=12, color="purple"),
+	showarrow=False)
 #
 # fig_pluvi.add_annotation(text="Soil temperature (cultivated 10cm, cultivated 50cm, grass 10cm)",
 #     xref="paper", yref="paper",
