@@ -159,7 +159,7 @@ fig_pluvi.update_layout(
         autorange=True,
         domain=[.16, .3],
         linecolor="black",
-        mirror=True,
+        mirror=False,
         showline=True,
         side="left",
         ticks="inside",
