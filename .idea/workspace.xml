@@ -10,9 +10,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b02c017-2db3-4f45-be98-f9139669d3a6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/write_pluvi_plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/write_pluvi_plots.py" afterDir="false" />
-    </list>
+    <list default="true" id="4b02c017-2db3-4f45-be98-f9139669d3a6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -209,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635633665869</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="nul2">
+      <created>1635634002802</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1635634002802</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -242,7 +247,8 @@
     <MESSAGE value="Updated homepage" />
     <MESSAGE value="Slicing app" />
     <MESSAGE value="new CR1000B formats" />
-    <option name="LAST_COMMIT_MESSAGE" value="new CR1000B formats" />
+    <MESSAGE value="nul2" />
+    <option name="LAST_COMMIT_MESSAGE" value="nul2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="620" y="382" width="670" height="676" key="search.everywhere.popup" timestamp="1635490919555">
