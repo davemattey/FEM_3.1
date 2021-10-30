@@ -10,20 +10,20 @@ import io
 #create
 
 
-df_pluvi = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000B_TenMIns.csv",parse_dates=['TIMESTAMP'])
-print (df_pluvi.dtypes)
-print (df_pluvi)
+df_CR1000B = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000B_TenMins_slice.csv",parse_dates=['TIMESTAMP'])
+print (df_CR1000B.dtypes)
+print (df_CR1000B)
 print('pluvi time series read ')
 
 print('rain time series start ')
-df = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000_TenMins.csv",parse_dates=['TIMESTAMP','WS_mph_TMx'])
-print (df.dtypes)
+df_CR1000A = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000_TenMins_slice.csv",parse_dates=['TIMESTAMP','WS_mph_TMx'])
+print (df_CR1000A.dtypes)
 print('rain time series read ')
 
 
 #slice to last month
 
-df = df[-4032:]
+# df_CR1000A = df[-4032:]
 
 
 # Create figure
@@ -43,8 +43,8 @@ today1 = date.today()-timedelta(days=2)
 
 
 fig_pluvi.add_trace(go.Scattergl(
-    x=list(df.TIMESTAMP),
-    y=list(df.Rain_mm_Tot),
+    x=list(df_CR1000B.TIMESTAMP),
+    y=list(df_CR1000B.TB_Rain_mm_Tot),
     line={"width": 0.5},
     marker={"size": 2},
     mode="lines",
@@ -55,19 +55,19 @@ fig_pluvi.add_trace(go.Scattergl(
 ))
 
 fig_pluvi.add_trace(go.Scattergl(
-   x=list(df.TIMESTAMP),
-    y=list(df.Rain_24hr),
+   x=list(df_CR1000B.TIMESTAMP),
+    y=list(df_CR1000B.TB_Rain_24hr),
     line={"width": 1},
     mode="lines",
     line_shape='hv',
     # fill='tozeroy',
     name="Pluvimate A, daily total (mm)",
-    yaxis="y4",
+    yaxis="y3",
 ))
 
 fig_pluvi.add_trace(go.Scattergl(
-    x=list(df_pluvi.TIMESTAMP),
-    y=list(df_pluvi.Pluvi_B_mm_Tot),
+    x=list(df_CR1000B.TIMESTAMP),
+    y=list(df_CR1000B.Pluvi_B_mm_Tot),
     line={"width": 0.5},
     marker={"size": 2},
     mode="lines",
@@ -78,16 +78,29 @@ fig_pluvi.add_trace(go.Scattergl(
 ))
 
 fig_pluvi.add_trace(go.Scattergl(
-    x=list(df_pluvi.TIMESTAMP),
-    y=list(df_pluvi.Pluvi_B_24hr),
+    x=list(df_CR1000B.TIMESTAMP),
+    y=list(df_CR1000B.Pluvi_B_24hr),
     line={"width": 1},
     #marker={"size": 2},
     mode="lines",
     line_shape='hv',
     # fill='tozeroy',
     name="Pluvimate B, daily total (mm)",
-    yaxis="y4",
+    yaxis="y3",
 ))
+
+# fig_pluvi.add_trace(go.Scattergl(
+#     x=list(df_CR1000B.TIMESTAMP),
+#     y=list(df_CR1000B.Rain_mm_Tot),
+#     line={"width": 0.5},
+#     marker={"size": 2},
+#     mode="lines",
+#     line_shape='hv',
+#     # fill='tozeroy',
+#     name="Pluvimate B mm/minute",
+#     yaxis="y2",
+# ))
+
 
 
 #
@@ -184,7 +197,7 @@ fig_pluvi.update_layout(
         anchor="x",
         autorange=True,
         fixedrange=False,
-        domain=[0.52, 1],
+        domain=[0.0, .5],
         linecolor="black",
         #mirror=True,
         showline=True,
@@ -200,7 +213,7 @@ fig_pluvi.update_layout(
         title="Tipping bucket cumulative daily mm",
         anchor="x",
         autorange=True,
-        domain=[0, 0.5],
+        domain=[.52, 1],
         linecolor="black",
         mirror=True,
         showline=True,

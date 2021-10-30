@@ -189,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635289174792</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Slicing app">
+      <created>1635542781508</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1635542781508</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -220,7 +227,14 @@
     <MESSAGE value="correct monthly average error" />
     <MESSAGE value="revised pluvi plot" />
     <MESSAGE value="Updated homepage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated homepage" />
+    <MESSAGE value="Slicing app" />
+    <option name="LAST_COMMIT_MESSAGE" value="Slicing app" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="620" y="382" width="670" height="676" key="search.everywhere.popup" timestamp="1635490919555">
+      <screen x="0" y="23" width="1920" height="1177" />
+    </state>
+    <state x="620" y="382" width="670" height="676" key="search.everywhere.popup/0.23.1920.1177/-1920.23.1920.1177@0.23.1920.1177" timestamp="1635490919555" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
