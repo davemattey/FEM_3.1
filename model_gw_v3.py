@@ -21,15 +21,16 @@ print('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 flood = 118.05
 flood1 = -0.85   # A32
 flood2 = -9.05  # lavant trigger level Chawton church 109m
-flood3 = -3.05   # lavant trigger Manor farm  115m
+flood3 = -3.05  # lavant trigger Manor farm  115m
 flood4 = -6.8   # lavant at Chawton footpath
 
 # set interval for slicing, rolling P sum and days to forward model
 P_window = 7   #  window for cumulative P and effective recharge
-smooth = 3     #  data smoothing
-W_recent = 28  # slice to find current values
+smooth = 3     #  data smoothing  - what is this for???
+W_recent = 28  # slice size to find current values
+trend_width = 7   # length of window to fit trend in days
 
-W_search = 120  # window to find peaks in days
+W_search = 60  # window to find peaks in days
 W_search_back_from = '01-11-2020'
 
 # run model from today TRUE or from past date FALSE
@@ -45,9 +46,11 @@ datetime_today = datetime.datetime.now()
 # month_now=int(datetime.now().strftime('%m'))
 month_now=int(date_today.strftime('%m'))
 
-month_now_array = month_now-1   # because array index begins at 0!
 
+# find ET and scale to P_window i.e. rolling average
+month_now_array = month_now-1   # because array index begins at 0!
 P_ET = ET[month_now_array]
+ET_P_window = P_window * ET[month_now_array]/30
 
 
 # Set windows for forward model
@@ -356,15 +359,15 @@ if No_peaks == False:
 
 
 
-print('••••••••••••••••••••••••••••••••••••••••••• FIND TREND SET FLAGS •••••••••••••••••••••••••••••••••••••••••••••••••••••••••')
+print('••••••••••••••••••••••••••••••••••••••••••• FIND TRENDS AND SET FLAGS •••••••••••••••••••••••••••••••••••••••••••••••••••••••••')
 
 
 ############### RECHARGE #################
 
 
-# fin slope from this week
-x = np.array(df_searchwindow['yearday'].iloc[-4:])
-y = np.array(df_searchwindow['P_rolling'].iloc[-4:])
+# find slope from this week
+x = np.array(df_searchwindow['yearday'].iloc[-trend_width:])
+y = np.array(df_searchwindow['P_rolling'].iloc[-trend_width:])
 z = np.polyfit(x, y, 1)
 
 slope = z[0]
@@ -394,8 +397,8 @@ rate_change_min = df_change_min.iloc[0, 43]
 depth_change_min = df_change_min.iloc[0, 37]
 print("CHANGE  BH rate min date, P, rate and depth ", date_change_min, f'{P_change_min:.3f}', f'{rate_change_min:.3f}', f'{depth_change_min:.3f}')
 
-x = np.array(df_searchwindow['yearday'].iloc[-3:-1])
-y = np.array(df_searchwindow['BH_change_smooth'].iloc[-3:-1])  # this misses the last row which contain NaN and previous 3
+x = np.array(df_searchwindow['yearday'].iloc[-trend_width:-1])
+y = np.array(df_searchwindow['BH_change_smooth'].iloc[-trend_width:-1])  # this misses the last row which contain NaN and previous 3
 
 z = np.polyfit(x, y, 1)
 
@@ -418,8 +421,8 @@ print ('CHANGE  = ', r_change)
 # set depth flag
 # subwindow to fine slope = last 3 days
 
-x = np.array(df_searchwindow['yearday'].iloc[-3:])
-y = np.array(df_searchwindow['BH_depth'].iloc[-3:])
+x = np.array(df_searchwindow['yearday'].iloc[-trend_width:])
+y = np.array(df_searchwindow['BH_depth'].iloc[-trend_width:])
 z = np.polyfit(x, y, 1)
 
 slope = z[0]
@@ -453,11 +456,10 @@ print('••••••••••••••••••••••••�
 
 
 # Today is P_rolling_smooth >P_ET
-print('P_rolling_today = ', P_rolling_today,'Recharge = ', recharge)
+print('P_rolling_today = ', P_rolling_today,'and Recharge = ', recharge)
 print('Most recent rate peak was ', date_change_max)
 print('Most recent recharge threshold date was ',date_recharge_threshold)
 print ('date_recharge_threshold > date_change_max',date_recharge_threshold > date_change_max)
-
 
 # if recharge == False: model = 'Fall_0'
 # if recharge == True and r_change == 'r_change_rise': model = 'Rise'
@@ -697,18 +699,18 @@ df_models_a.to_csv(filename_a,index=True)
 # print ('filenames', filename,filename_a)
 # print(df_models)
 
-
-
 movement = 'something'
 
-#choose status values
+print('••••••••••••••••••••••••••••••• set summary statements ••••••••••••••••••••••••••••••••••••••••••••')
 
-# recharge threshold
+#set summary statements
+
+# recharge situation
 if recharge == False: status_recharge = ' recharge is very low'
 if recharge == False and P_total_today>P_ET: status_recharge = ' higher recharge may change the recent trend in groundwater level '
-if recharge == True: status_recharge = ' recharge is significant such that levels could rise at an increasing rate'
+if recharge == True: status_recharge = ' recharge is significant such that levels could rise '
 
-#change
+#change in level
 if bh_change_today < -.15: status_change= 'and is falling steadily '
 elif bh_change_today < .05 and bh_change_today > -.05: status_change= ' and is changing by '
 elif bh_change_today < -.05 and bh_change_today > -.15: status_change= ' and is falling slowly at '
