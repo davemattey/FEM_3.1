@@ -113,27 +113,27 @@ if model == 'Fall_0':
 
     # date peak not defines
 
-    fig_gw.add_trace(go.Scattergl(
-        x=[date_change_max],
-        y=[depth_change_max],
-        marker=dict(color="purple", size=11),
-        mode="markers+text",
-        text="model begin",
-        name="Today",
-        textposition="top left",
-        yaxis="y3",
-    ))
+    # fig_gw.add_trace(go.Scattergl(
+    #     x=[date_change_peak],
+    #     y=[depth_change_peak],
+    #     marker=dict(color="purple", size=11),
+    #     mode="markers+text",
+    #     text="model begin",
+    #     name="Today",
+    #     textposition="top left",
+    #     yaxis="y3",
+    # ))
 
-    fig_gw.add_trace(go.Scattergl(
-        x=[date_change_max],
-        y=[rate_change_max],   # or plot rate_peak_smooth to sit on line
-        marker=dict(color="purple", size=11),
-        mode="markers+text",
-        text="model begin",
-        name="Today",
-        textposition="top left",
-        yaxis="y4",
-    ))
+    # fig_gw.add_trace(go.Scattergl(
+    #     x=[date_change_peak],
+    #     y=[rate_change_peak],   # or plot rate_peak_smooth to sit on line
+    #     marker=dict(color="purple", size=11),
+    #     mode="markers+text",
+    #     text="model begin",
+    #     name="Today",
+    #     textposition="top left",
+    #     yaxis="y4",
+    # ))
 
 if model == 'Linear':
 
@@ -167,29 +167,28 @@ if model == 'Linear':
         showlegend=False
     ))
 
-    # date peak not defines
 
-    # fig_gw.add_trace(go.Scattergl(
-    #     x=[date_change_max],
-    #     y=[depth_change_max],
-    #     marker=dict(color="purple", size=11),
-    #     mode="markers+text",
-    #     text="model begin",
-    #     name="Today",
-    #     textposition="top left",
-    #     yaxis="y3",
-    # ))
-    #
-    # fig_gw.add_trace(go.Scattergl(
-    #     x=[date_change_max],
-    #     y=[rate_change_max],   # or plot rate_peak_smooth to sit on line
-    #     marker=dict(color="purple", size=11),
-    #     mode="markers+text",
-    #     text="model begin",
-    #     name="Today",
-    #     textposition="top left",
-    #     yaxis="y4",
-    # ))
+    fig_gw.add_trace(go.Scattergl(
+        x=[date_change_peak],
+        y=[depth_change_peak],
+        marker=dict(color="purple", size=11),
+        mode="markers+text",
+        text="model begin",
+        name="Today",
+        textposition="top left",
+        yaxis="y3",
+    ))
+
+    fig_gw.add_trace(go.Scattergl(
+        x=[date_change_peak],
+        y=[rate_change_peak],   # or plot rate_peak_smooth to sit on line
+        marker=dict(color="purple", size=11),
+        mode="markers+text",
+        text="model begin",
+        name="Today",
+        textposition="top left",
+        yaxis="y4",
+    ))
 
 
 
@@ -376,11 +375,11 @@ if No_peaks == False:
     ))
 
     # plot peaks from peak searches  - rate peak - if present
-    if no_rate_peaks == False:
+    if No_rate_peaks == False:
 
         fig_gw.add_trace(go.Scattergl(
-            x=list(df_BH_rate_peaks.date_BH_rate_max),
-            y=list(df_BH_rate_peaks.rate_BH_rate_max),
+            x=list(df_BH_rate_peaks.date_rate_peak),
+            y=list(df_BH_rate_peaks.rate_rate_peak),
             marker=dict(color="purple", size=8),
             mode="markers",
             # line_shape='hv',
@@ -393,8 +392,8 @@ if No_peaks == False:
         # plot rate peak on depth
 
         fig_gw.add_trace(go.Scattergl(
-            x=list(df_BH_rate_peaks.date_BH_rate_max),
-            y=list(df_BH_rate_peaks.depth_BH_rate_max),
+            x=list(df_BH_rate_peaks.date_rate_peak),
+            y=list(df_BH_rate_peaks.depth_rate_peak),
             marker=dict(color="purple", size=8),
             mode="markers",
             # line_shape='hv',
