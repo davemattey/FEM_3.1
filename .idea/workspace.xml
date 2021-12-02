@@ -10,7 +10,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b02c017-2db3-4f45-be98-f9139669d3a6" name="Default Changelist" comment="">
+    <list default="true" id="4b02c017-2db3-4f45-be98-f9139669d3a6" name="Default Changelist" comment="reworking of v4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model_gw_v4.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_gw_v4.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/write_gw_plots_v4.py" beforeDir="false" afterPath="$PROJECT_DIR$/write_gw_plots_v4.py" afterDir="false" />
@@ -225,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637799941279</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="reworking of v4">
+      <created>1638000038606</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1638000038606</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -260,13 +267,14 @@
     <MESSAGE value="new CR1000B formats" />
     <MESSAGE value="nul2" />
     <MESSAGE value="Models version 4" />
-    <option name="LAST_COMMIT_MESSAGE" value="Models version 4" />
+    <MESSAGE value="reworking of v4" />
+    <option name="LAST_COMMIT_MESSAGE" value="reworking of v4" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="107" y="31" width="1612" height="1131" key="dock-window-1" timestamp="1637963664913">
+    <state x="108" y="32" width="1612" height="1131" key="dock-window-1" timestamp="1638299506796">
       <screen x="0" y="23" width="1920" height="1177" />
     </state>
-    <state x="107" y="31" width="1612" height="1131" key="dock-window-1/-1920.23.1920.1177/0.23.1920.1177@0.23.1920.1177" timestamp="1637963664913" />
+    <state x="108" y="32" width="1612" height="1131" key="dock-window-1/-1920.23.1920.1177/0.23.1920.1177@0.23.1920.1177" timestamp="1638299506796" />
     <state x="620" y="382" width="670" height="676" key="search.everywhere.popup" timestamp="1635490919555">
       <screen x="0" y="23" width="1920" height="1177" />
     </state>
@@ -282,22 +290,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/model_gw_v4.py</url>
-          <line>713</line>
+          <line>725</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/model_gw_v4.py</url>
-          <line>340</line>
+          <line>347</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/write_gw_plots_v4.py</url>
-          <line>380</line>
+          <line>367</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/model_gw_v4.py</url>
-          <line>514</line>
+          <line>526</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>

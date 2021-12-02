@@ -68,18 +68,7 @@ if model == 'Rise':
     #     yaxis="y3",
     # ))
 
-if model == 'Fall_0':
-
-    # fig_gw.add_trace(go.Scattergl(
-    #     x=list(day),y=list(rise),
-    #     line=dict(color="green", width=1, dash='dash'),
-    #     mode="lines",
-    #     name="normal rainfall",
-    #     yaxis="y3",
-    #     showlegend=False
-    # ))
-
-    # this doesnt work - need to calculate rate
+if model == 'Fall':
 
     fig_gw.add_trace(go.Scattergl(
         x=list(day),y=list(rate),
@@ -111,29 +100,29 @@ if model == 'Fall_0':
         showlegend=False
     ))
 
-    # date peak not defines
+    # date peak not defined
 
-    # fig_gw.add_trace(go.Scattergl(
-    #     x=[date_change_peak],
-    #     y=[depth_change_peak],
-    #     marker=dict(color="purple", size=11),
-    #     mode="markers+text",
-    #     text="model begin",
-    #     name="Today",
-    #     textposition="top left",
-    #     yaxis="y3",
-    # ))
+    fig_gw.add_trace(go.Scattergl(
+        x=[date_change_peak],
+        y=[depth_change_peak],
+        marker=dict(color="purple", size=11),
+        mode="markers+text",
+        text="model begin",
+        name="Today",
+        textposition="top left",
+        yaxis="y3",
+    ))
 
-    # fig_gw.add_trace(go.Scattergl(
-    #     x=[date_change_peak],
-    #     y=[rate_change_peak],   # or plot rate_peak_smooth to sit on line
-    #     marker=dict(color="purple", size=11),
-    #     mode="markers+text",
-    #     text="model begin",
-    #     name="Today",
-    #     textposition="top left",
-    #     yaxis="y4",
-    # ))
+    fig_gw.add_trace(go.Scattergl(
+        x=[date_change_peak],
+        y=[rate_change_peak],   # or plot rate_peak_smooth to sit on line
+        marker=dict(color="purple", size=11),
+        mode="markers+text",
+        text="model begin",
+        name="Today",
+        textposition="top left",
+        yaxis="y4",
+    ))
 
 if model == 'Linear':
 
@@ -208,8 +197,6 @@ fig_gw.add_trace(go.Scattergl(
     yaxis="y2",
     showlegend=False,
 ))
-
-print(df2.date,df2.PminusET)
 
 # Rain Y2
 fig_gw.add_trace(go.Scattergl(
@@ -352,7 +339,7 @@ fig_gw.add_trace(go.Scattergl(
 
 # plot recharge markers if found
 
-if No_peaks == False:
+if not No_peaks:
 
     fig_gw.add_trace(go.Scattergl(
         x=list(df_P_ET.TIMESTAMP),
@@ -375,7 +362,7 @@ if No_peaks == False:
     ))
 
     # plot peaks from peak searches  - rate peak - if present
-    if No_rate_peaks == False:
+    if not No_rate_peaks:
 
         fig_gw.add_trace(go.Scattergl(
             x=list(df_BH_rate_peaks.date_rate_peak),
@@ -406,7 +393,7 @@ if No_peaks == False:
 
 #  plot level today
 fig_gw.add_trace(go.Scattergl(
-    x=[end_date],
+    x=[slice_end],
     y=[bh_depth_today],
     marker=dict(color="darkblue", size=8),
     mode="markers+text",
