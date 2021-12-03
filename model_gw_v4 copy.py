@@ -28,7 +28,7 @@ print('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 #  run model from today TRUE or historical data FALSE
 Model_run_today = True
 # set historical data begin
-Model_run_from = '31-10-2021'
+Model_run_from = '01-10-2021'
 
 # convert model start date to datetime
 Model_run_from_DT = datetime.datetime.strptime(Model_run_from, '%d-%m-%Y')
@@ -41,7 +41,7 @@ else:
 
 # parameters for validation run loop
 Model_run_interval = 1
-Model_run_nsteps = 30
+Model_run_nsteps = 60
 Model_run_end = date_today
 
 # name output file
@@ -175,9 +175,8 @@ print(
 #  size of each step in days
 
 # set start and end dates for looping
-day_delta = datetime.timedelta(days=Model_run_interval)
-
 if Model_run_today:
+    day_delta = datetime.timedelta(days=1)
     start_date = datetime.date.today()
     end_date = start_date + datetime.timedelta(days=1)
 
@@ -297,9 +296,11 @@ for i in range((end_date - start_date).days):
         PminusET_max = df_recharge_max.iloc[0, 1]
         rate_recharge_max = df_recharge_max.iloc[0, 2]
         depth_recharge_max = df_recharge_max.iloc[0, 3]
+
+        print(df_recharge_peaks)
         print("CONDITIONS at P-ET peak date, P-ET, rate and depth ", date_recharge_max, f'{PminusET_max:.3f}',
               f'{rate_recharge_max:.3f}', f'{depth_recharge_max:.3f}')
-    # else: print ("No peaks found")
+
     else:
         No_peaks = True
         print("No peaks found, setting conditions to current")
@@ -307,10 +308,6 @@ for i in range((end_date - start_date).days):
         PminusET_max = df_searchwindow.iloc[-1, 50]
         rate_recharge_max = df_searchwindow.iloc[-1, 47]
         depth_recharge_max = df_searchwindow.iloc[-1, 41]
-
-    if not No_peaks:
-        print('CONDITIONS at recharge peaks')
-        print(df_recharge_peaks)
 
         # create column  headings and append to master list
         df_GW_history = df_recharge_peaks[['date_recharge_max']]
@@ -325,31 +322,41 @@ for i in range((end_date - start_date).days):
 
         print(df_P_ET_init)
 
-        df_P_ET_init['dateshift'] = df_P_ET_init.TIMESTAMP - df_P_ET_init.TIMESTAMP.shift(
-            1)  # identifies consecutive days
+        df_P_ET_init['dateshift'] = df_P_ET_init.TIMESTAMP - df_P_ET_init.TIMESTAMP.shift(1)  # identifies consecutive days
         df_P_ET = df_P_ET_init[
             (df_P_ET_init.dateshift / np.timedelta64(1, 'D') > 1)]  # filters for first day above ET_P_window
 
-        print('Recharge threshold crossed on', df_P_ET)
+        if len(df_P_ET_init.axes[0]) > 0:
 
-        # choose most recent threshold date
-        df_recharge_threshold = (df_P_ET[df_P_ET.TIMESTAMP == df_P_ET.TIMESTAMP.max()])
 
-        date_recharge_threshold = df_recharge_threshold.iloc[0, 0]
-        PminusET_recharge_threshold = df_recharge_threshold.iloc[0, 50]
-        rate_recharge_threshold = df_recharge_threshold.iloc[0, 47]
-        depth_recharge_threshold = df_recharge_threshold.iloc[0, 41]
-        print("Conditions at P threshold  date, P-ET, change rate and depth ", date_recharge_threshold,
+            print('Recharge threshold crossed on', df_P_ET)
+
+            # choose most recent threshold date
+            df_recharge_threshold = (df_P_ET[df_P_ET.TIMESTAMP == df_P_ET.TIMESTAMP.max()])
+
+            date_recharge_threshold = df_recharge_threshold.iloc[0, 0]
+            PminusET_recharge_threshold = df_recharge_threshold.iloc[0, 50]
+            rate_recharge_threshold = df_recharge_threshold.iloc[0, 47]
+            depth_recharge_threshold = df_recharge_threshold.iloc[0, 41]
+
+            print("Conditions at P threshold  date, P-ET, change rate and depth ", date_recharge_threshold,
               f'{PminusET_recharge_threshold:.3f}',
               f'{rate_recharge_threshold:.3f}', f'{depth_recharge_threshold:.3f}')
 
-        #  make column
-        df_P_ET_list = df_P_ET[['TIMESTAMP', ]]
-        df_P_ET_list['type'] = 'recharge_threshold'
-        #  and append to master list
-        df_GW_history = df_GW_history.append(df_P_ET_list)
+            #  make column
+            df_P_ET_list = df_P_ET[['TIMESTAMP', ]]
+            df_P_ET_list['type'] = 'recharge_threshold'
+            #  and append to master list
+            df_GW_history = df_GW_history.append(df_P_ET_list)
 
-        # if No_peaks == False and bh_change_week > 0:
+        else:
+            No_recharge_threshold = True
+            print("No recharge threshold found, setting conditions to current")
+            date_recharge_threshold = df_searchwindow.iloc[-1, 0]
+            PminusET_recharge_threshold = df_searchwindow.iloc[-1, 50]
+            rate_recharge_threshold = df_searchwindow.iloc[-1, 47]
+            depth_recharge_threshold = df_searchwindow.iloc[-1, 41]
+
 
         print(
             '######################################### LEVEL CHANGE RATE ############################################')
@@ -394,6 +401,10 @@ for i in range((end_date - start_date).days):
             df_change_max_list['type'] = 'change_max'
             df_GW_history = df_GW_history.append(df_change_max_list)
 
+            # sort in order of date and print
+            df_GW_history = df_GW_history.sort_values(by='TIMESTAMP')
+            print('GW history sorted', df_GW_history)
+
         else:
             No_rate_peaks = True
             print("No rate peaks found... set to model start date and parameters")
@@ -402,9 +413,7 @@ for i in range((end_date - start_date).days):
             rate_change_peak = df_searchwindow.iloc[-1, 47]
             depth_change_peak = df_searchwindow.iloc[-1, 41]
 
-    # sort in order of date and print
-    df_GW_history = df_GW_history.sort_values(by='TIMESTAMP')
-    print('GW history sorted', df_GW_history)
+
 
     print(
         '•••••••••••••••••••••••••••••••••••• FIND TREND GRADIENTS AND  FLAGS USED TO CHOOSE MODEL ••••••••••••••••••••••••••••••')

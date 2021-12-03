@@ -13,7 +13,6 @@
     <list default="true" id="4b02c017-2db3-4f45-be98-f9139669d3a6" name="Default Changelist" comment="reworking of v4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model_gw_v4.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_gw_v4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/write_gw_plots_v4.py" beforeDir="false" afterPath="$PROJECT_DIR$/write_gw_plots_v4.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +30,34 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="model_gw_v4" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FEM_3.1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/model_gw_v4.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.model_gw_v4" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -232,7 +259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638000038606</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Major update simplied code and potential for validation loop ready">
+      <created>1638484946088</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1638484946088</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -268,9 +302,14 @@
     <MESSAGE value="nul2" />
     <MESSAGE value="Models version 4" />
     <MESSAGE value="reworking of v4" />
-    <option name="LAST_COMMIT_MESSAGE" value="reworking of v4" />
+    <MESSAGE value="Major update simplied code and potential for validation loop ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="Major update simplied code and potential for validation loop ready" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="704" y="226" key="#model_gw_v4" timestamp="1638548182991">
+      <screen x="0" y="23" width="1920" height="1177" />
+    </state>
+    <state x="704" y="226" key="#model_gw_v4/-1920.23.1920.1177/0.23.1920.1177@0.23.1920.1177" timestamp="1638548182991" />
     <state x="108" y="32" width="1612" height="1131" key="dock-window-1" timestamp="1638299506796">
       <screen x="0" y="23" width="1920" height="1177" />
     </state>
@@ -290,12 +329,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/model_gw_v4.py</url>
-          <line>725</line>
+          <line>739</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/model_gw_v4.py</url>
-          <line>347</line>
+          <line>358</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -305,7 +344,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/model_gw_v4.py</url>
-          <line>526</line>
+          <line>538</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
