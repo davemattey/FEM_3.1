@@ -13,6 +13,8 @@
     <list default="true" id="4b02c017-2db3-4f45-be98-f9139669d3a6" name="Default Changelist" comment="reworking of v4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model_gw_v4.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_gw_v4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output_model.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output_model.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output_slice.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output_slice.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +268,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638484946088</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Major update simplified code and potential for validation loop ready">
+      <created>1638555749056</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1638555749056</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -303,7 +312,8 @@
     <MESSAGE value="Models version 4" />
     <MESSAGE value="reworking of v4" />
     <MESSAGE value="Major update simplied code and potential for validation loop ready" />
-    <option name="LAST_COMMIT_MESSAGE" value="Major update simplied code and potential for validation loop ready" />
+    <MESSAGE value="Major update simplified code and potential for validation loop ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="Major update simplified code and potential for validation loop ready" />
   </component>
   <component name="WindowStateProjectService">
     <state x="704" y="226" key="#model_gw_v4" timestamp="1638548182991">
@@ -329,12 +339,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/model_gw_v4.py</url>
-          <line>739</line>
+          <line>744</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/model_gw_v4.py</url>
-          <line>358</line>
+          <line>363</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -344,7 +354,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/model_gw_v4.py</url>
-          <line>538</line>
+          <line>543</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
