@@ -25,7 +25,7 @@ from app_stats_P import Stats_P
 from app_stats_T import Stats_T
 from app_timeseries import Timeseries
 from app_timeseries_WC import WC_archive
-from app_groundwater_v2 import Groundwater
+from app_groundwater_v4 import Groundwater
 from app_diagnostics import Diagnostics
 from app_pluvi import Pluvi
 

@@ -25,7 +25,7 @@ today_ss = sun.get_local_sunset_time()
 
 # set headline text based on model type
 
-if model == 'Fall_0':
+if model == 'Fall':
 	movement = 'would slowly rise and stabilise at '
 	in_days = 'within the next three weeks '
 

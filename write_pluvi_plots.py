@@ -6,26 +6,39 @@ import datetime
 import ftplib
 import os
 import io
-
-#create
-
-
-df_CR1000B = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000B_TenMins_slice.csv",parse_dates=['TIMESTAMP'])
-print (df_CR1000B.dtypes)
-print (df_CR1000B)
-print('pluvi time series read ')
-
+print(' ')
+print(' ')
+print(' ')
 print('rain time series start ')
 df_CR1000A = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000_TenMins_slice.csv",parse_dates=['TIMESTAMP','WS_mph_TMx'])
+print(" ")
+print("CR1000A data ")
 print (df_CR1000A.dtypes)
 print('rain time series read ')
 
+'''
+df_CR1000A['TIMESTAMP'] = pd.to_datetime(df_CR1000A['TIMESTAMP'])
+df_CR1000A.set_index('TIMESTAMP', inplace=True)
+df_CR1000A_9am = df_CR1000A.resample('24H',offset="9H").sum()
+print(" ")
+print("offset to 9am ")
+print (df_CR1000A_9am)
+'''
 
-#slice to last month
-
-# df_CR1000A = df[-4032:]
-
-
+df_CR1000B = pd.read_csv("ftp://CR1000:hawa115o@31.125.165.5/homes/CR1000/CR1000B_TenMins_slice.csv",parse_dates=['TIMESTAMP'])
+print (df_CR1000B.dtypes)
+print(" ")
+print("CR1000 B ")
+print (df_CR1000B)
+print('pluvi time series read ')
+'''
+# df_CR1000B['TIMESTAMP'] = pd.to_datetime(df_CR1000B['TIMESTAMP'])
+df_CR1000B.set_index('TIMESTAMP', inplace=True)
+df_CR1000B_9am = df_CR1000B.resample('24H',offset="9H").sum()
+print(" ")
+print("offset to 9am ")
+print(df_CR1000B_9am)
+'''
 # Create figure
 fig_pluvi = go.Figure()
 
