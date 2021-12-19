@@ -10,15 +10,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b02c017-2db3-4f45-be98-f9139669d3a6" name="Default Changelist" comment="reworking of v4">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/homepage.py" beforeDir="false" afterPath="$PROJECT_DIR$/homepage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model_gw_v4.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_gw_v4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_model.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output_model.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_slice.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output_slice.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/write_pluvi_plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/write_pluvi_plots.py" afterDir="false" />
-    </list>
+    <list default="true" id="4b02c017-2db3-4f45-be98-f9139669d3a6" name="Default Changelist" comment="reworking of v4" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -285,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638832905350</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Deploy model v4">
+      <created>1639906842591</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1639906842591</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -324,7 +323,8 @@
     <MESSAGE value="Major update simplied code and potential for validation loop ready" />
     <MESSAGE value="Major update simplified code and potential for validation loop ready" />
     <MESSAGE value="Corrrected empty dataframe erros" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrrected empty dataframe erros" />
+    <MESSAGE value="Deploy model v4" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deploy model v4" />
   </component>
   <component name="WindowStateProjectService">
     <state x="704" y="226" key="#model_gw_v4" timestamp="1638548182991">
