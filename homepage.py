@@ -99,8 +99,8 @@ body = dbc.Container([
     dbc.Row([dbc.Col
 
 			([html.H5("The small print..."),
-			  html.Span('Version FEM_3.2 updated 6/8/21',style={'padding': '1.5px', 'fontSize': '10px', 'display': 'table'}),
-			  html.Span('New in this update: development menu, raingauge testing page',style={'padding': '1.5px', 'fontSize': '10px', 'display': 'table'}),
+			  html.Span('Version FEM_3.3 updated 19/12/21',style={'padding': '1.5px', 'fontSize': '10px', 'display': 'table'}),
+			  html.Span('New in this update: updated groundwater model ',style={'padding': '1.5px', 'fontSize': '10px', 'display': 'table'}),
 			  html.Span('The information contained in this website is provided for general interest. No warranty given for completeness, accuracy or reliability.',style={'padding': '1.5px', 'fontSize': '10px', 'display': 'table'}),
 			html.Span('© Dave Mattey 2021 all rights reserved. ',style={'padding': '1.5px', 'fontSize': '10px', 'display': 'table'})]),
 			#html.Img(src="https://hitcounter.pythonanywhere.com/count/tag.svg",alt = 'hits'),
