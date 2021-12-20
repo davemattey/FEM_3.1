@@ -15,7 +15,7 @@ from model_gw_v4 import *
 print('groundwater begin')
 
 # upload plot to server?
-upload = False
+upload = True
 
 date_only = datetime.datetime.now().date()
 
